@@ -237,7 +237,7 @@
 	crate_type = /obj/structure/closet/crate/secure
 
 /datum/supply_pack/emergency/specialops
-	name = "Special Ops Supplies"
+	name = "Ennergency Bot/Internals Crate" //Typo is intentional
 	desc = "(*!&@#SAD ABOUT THAT NULL_ENTRY, HUH OPERATIVE? WELL, THIS LITTLE ORDER CAN STILL HELP YOU OUT IN A PINCH. CONTAINS A BOX OF FIVE EMP GRENADES, THREE SMOKEBOMBS, AN INCENDIARY GRENADE, AND A \"SLEEPY PEN\" FULL OF NICE TOXINS!#@*$"
 	hidden = TRUE
 	cost = CARGO_CRATE_VALUE * 4

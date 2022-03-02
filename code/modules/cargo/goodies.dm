@@ -167,3 +167,34 @@
 	desc = "A complete meal package for the terminally lazy. Contains one Ready-Donk meal."
 	cost = PAYCHECK_MEDIUM * 2
 	contains = list(/obj/item/food/ready_donk)
+
+/datum/supply_pack/goody/nullgoodie
+	name = "NULL_ENTRY"
+	desc = "$#@*WELL OPERATIVE THE NULL ENTRY IS BACK-ISH. IF YOU HAVE THE EXTRA CASH TO FLING AROUND FEEL FREE TO TRY YOUR LUCK ON OUR LEFTOV- WE MEAN LOOTBOXES>#$!("
+	cost = PAYCHECK_HARD * 25
+	contains = list(/obj/item/storage/box/syndie_kit/nullgoodie)
+	hidden = TRUE
+
+/obj/item/storage/box/syndie_kit/nullgoodie
+
+/obj/item/storage/box/syndie_kit/nullgoodie/PopulateContents()
+	..()
+	switch(pick_weight(list("donk" = 25, "deck" = 25, "cigs" = 20, "soap" = 15, "hypo" = 5, "blade" = 5, "jack" = 3, "balloon" = 1, "tc" = 1)))
+		if ("donk")
+			new /obj/item/storage/box/donkpockets(src)
+		if ("deck")
+			new /obj/item/toy/cards/deck/syndicate(src)
+		if ("cigs")
+			new /obj/item/storage/fancy/cigarettes/cigpack_syndicate(src)
+		if ("hypo")
+			new /obj/item/reagent_containers/hypospray/combat(src)
+		if ("soap")
+			new /obj/item/soap/syndie(src)
+		if ("blade")
+			new /obj/item/switchblade(src)
+		if ("jack")
+			new /obj/item/card/emag/doorjack(src)
+		if ("balloon")
+			new /obj/item/toy/balloon/syndicate(src)
+		if ("tc")
+			new /obj/item/stack/telecrystal(src)
