@@ -540,27 +540,50 @@
 	name = "Exploration Drone Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/exodrone_control_console
 
-/obj/item/circuitboard/computer/service_orders
-	name = "Service Order (Computer Board)"
+/obj/item/circuitboard/computer/department_orders
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
+	var/contraband = FALSE
+
+/obj/item/circuitboard/computer/department_orders/multitool_act(mob/living/user)
+	. = ..()
+	if(!(obj_flags & EMAGGED))
+		contraband = !contraband
+		to_chat(user, span_notice("Permit restrictions set to [contraband ? "Laxed" : "Standard"]."))
+	else
+		to_chat(user, span_alert("permit restrictions are unresponsive."))
+
+/obj/item/circuitboard/computer/department_orders/emag_act(mob/living/user)
+	if(!(obj_flags & EMAGGED))
+		contraband = TRUE
+		obj_flags |= EMAGGED
+		to_chat(user, span_notice("You override [src]'s order permit restrictions, unlocking special supplies and contraband."))
+
+/obj/item/circuitboard/computer/department_orders/configure_machine(obj/machinery/computer/department_orders/machine)
+	if(!istype(machine))
+		CRASH("Cargo board attempted to configure incorrect machine type: [machine] ([machine?.type])")
+
+	machine.contraband = contraband
+	if (obj_flags & EMAGGED)
+		machine.obj_flags |= EMAGGED
+	else
+		machine.obj_flags &= ~EMAGGED
+
+/obj/item/circuitboard/computer/department_orders/service
+	name = "Service Order (Computer Board)"
 	build_path = /obj/machinery/computer/department_orders/service
 
-/obj/item/circuitboard/computer/engineering_orders
+/obj/item/circuitboard/computer/department_orders/engineering
 	name = "Engineering Order (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/computer/department_orders/engineering
 
-/obj/item/circuitboard/computer/science_orders
+/obj/item/circuitboard/computer/department_orders/science
 	name = "Science Order (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/computer/department_orders/science
 
-/obj/item/circuitboard/computer/security_orders
+/obj/item/circuitboard/computer/department_orders/security
 	name = "Security Order (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/computer/department_orders/security
 
-/obj/item/circuitboard/computer/medical_orders
+/obj/item/circuitboard/computer/department_orders/medical
 	name = "Medical Order (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/computer/department_orders/medical

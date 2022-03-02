@@ -13,6 +13,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 	desc = "Used to order supplies for a department. Crates ordered this way will be locked until they reach their destination."
 	icon_screen = "supply"
 	light_color = COLOR_BRIGHT_ORANGE
+	circuit = /obj/item/circuitboard/computer/department_orders
 	///reference to the order we've made UNTIL it gets sent on the supply shuttle. this is so heads can cancel it
 	var/datum/supply_order/department_order
 	///access required to override an order - this should be a head of staff for the department
@@ -21,6 +22,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 	var/list/department_delivery_areas = list()
 	///which groups this computer can order from
 	var/list/dep_groups = list()
+	var/contraband = FALSE
 
 /obj/machinery/computer/department_orders/Initialize(mapload, obj/item/circuitboard/board)
 	. = ..()
@@ -37,6 +39,26 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 	if(!ui)
 		ui = new(user, src, "DepartmentOrders")
 		ui.open()
+
+/obj/machinery/computer/department_orders/emag_act(mob/user)
+	if(obj_flags & EMAGGED)
+		return
+	if(user)
+		user.visible_message(span_warning("[user] swipes a suspicious card through [src]!"),
+		span_notice("You override [src]'s order permit restrictions, unlocking special supplies and contraband."))
+
+	obj_flags |= EMAGGED
+	contraband = TRUE
+
+	// This also permanently sets this on the circuit board
+	var/obj/machinery/computer/department_orders/board = circuit
+	board.contraband = TRUE
+	board.obj_flags |= EMAGGED
+	update_static_data(user)
+
+/obj/machinery/computer/department_orders/on_construction()
+	. = ..()
+	circuit.configure_machine(src)
 
 /obj/machinery/computer/department_orders/ui_data(mob/user)
 	var/list/data = list()
@@ -69,7 +91,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 			)
 			supply_data += list(target_group)
 		//skip packs we should not show, even if we should show the group
-		if((pack.hidden && !(obj_flags & EMAGGED)) || (pack.special && !pack.special_enabled) || pack.DropPodOnly || pack.goody)
+		if((pack.hidden && !(obj_flags & EMAGGED)) || (pack.special && !pack.special_enabled) || pack.DropPodOnly || pack.goody || pack.restricted || (pack.contraband && !contraband))
 			continue
 		//finally the pack data itself
 		target_group["packs"] += list(list(
@@ -161,7 +183,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 
 /obj/machinery/computer/department_orders/service
 	name = "service order console"
-	circuit = /obj/item/circuitboard/computer/service_orders
+	circuit = /obj/item/circuitboard/computer/department_orders/service
 	department_delivery_areas = list(/area/hallway/secondary/service, /area/service/bar/atrium)
 	override_access = ACCESS_HOP
 	req_one_access = ACCESS_SERVICE
@@ -169,7 +191,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 
 /obj/machinery/computer/department_orders/engineering
 	name = "engineering order console"
-	circuit = /obj/item/circuitboard/computer/engineering_orders
+	circuit = /obj/item/circuitboard/computer/department_orders/engineering
 	department_delivery_areas = list(/area/engineering/main)
 	override_access = ACCESS_CE
 	req_one_access = REGION_ACCESS_ENGINEERING
@@ -177,7 +199,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 
 /obj/machinery/computer/department_orders/science
 	name = "science order console"
-	circuit = /obj/item/circuitboard/computer/science_orders
+	circuit = /obj/item/circuitboard/computer/department_orders/science
 	department_delivery_areas = list(/area/science/research)
 	override_access = ACCESS_RD
 	req_one_access = REGION_ACCESS_RESEARCH
@@ -185,7 +207,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 
 /obj/machinery/computer/department_orders/security
 	name = "security order console"
-	circuit = /obj/item/circuitboard/computer/security_orders
+	circuit = /obj/item/circuitboard/computer/department_orders/security
 	department_delivery_areas = list(/area/security/brig)
 	override_access = ACCESS_HOS
 	req_one_access = REGION_ACCESS_SECURITY
@@ -193,7 +215,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 
 /obj/machinery/computer/department_orders/medical
 	name = "medical order console"
-	circuit = /obj/item/circuitboard/computer/medical_orders
+	circuit = /obj/item/circuitboard/computer/department_orders/medical
 	department_delivery_areas = list(/area/medical/medbay/central)
 	override_access = ACCESS_CMO
 	req_one_access = REGION_ACCESS_MEDBAY
