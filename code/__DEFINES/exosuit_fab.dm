@@ -25,6 +25,8 @@
 #define EXOSUIT_MODULE_PHAZON (1<<6)
 /// Module is compatible with Savannah Exosuit models
 #define EXOSUIT_MODULE_SAVANNAH (1<<7)
+/// Module is compatible with Tarantula Spacepod models
+#define EXOSUIT_MODULE_TARANTULA (1<<8)
 
 /// Module is compatible with "Working" Exosuit models - Ripley and Clarke
 #define EXOSUIT_MODULE_WORKING EXOSUIT_MODULE_RIPLEY | EXOSUIT_MODULE_CLARKE
@@ -32,6 +34,8 @@
 #define EXOSUIT_MODULE_COMBAT EXOSUIT_MODULE_GYGAX | EXOSUIT_MODULE_HONK | EXOSUIT_MODULE_DURAND | EXOSUIT_MODULE_PHAZON | EXOSUIT_MODULE_SAVANNAH
 /// Module is compatible with "Medical" Exosuit modelsm - Odysseus
 #define EXOSUIT_MODULE_MEDICAL EXOSUIT_MODULE_ODYSSEUS
+/// Module is compatible with "Spacepod" Exosuit models
+#define EXOSUIT_MODULE_SPACEPOD EXOSUIT_MODULE_TARANTULA
 
 /// Module is standard in use
 #define MODULE_GENERAL "General"

@@ -4302,6 +4302,7 @@
 #include "code\modules\vehicles\mecha\equipment\weapons\weapons.dm"
 #include "code\modules\vehicles\mecha\medical\odysseus.dm"
 #include "code\modules\vehicles\mecha\spacepod\spacepod.dm"
+#include "code\modules\vehicles\mecha\spacepod\tarantula.dm"
 #include "code\modules\vehicles\mecha\working\clarke.dm"
 #include "code\modules\vehicles\mecha\working\ripley.dm"
 #include "code\modules\vehicles\mecha\working\working.dm"

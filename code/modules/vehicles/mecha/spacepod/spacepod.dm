@@ -5,3 +5,15 @@
 	destruction_sleep_duration = 40
 	exit_delay = 40
 	allow_diagonal_movement = TRUE
+	movedelay = 10
+	var/mechspacespeed = 3
+
+/obj/vehicle/sealed/mecha/spacepod/Move()
+	. = ..()
+	var/turf/our_turf = get_turf(src)
+	var/is_nograv = !our_turf.has_gravity()
+	if(. & is_nograv)
+		movedelay = mechspacespeed
+	else
+		movedelay = 10
+
