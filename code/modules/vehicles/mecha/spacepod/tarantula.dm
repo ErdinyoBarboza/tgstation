@@ -1,5 +1,5 @@
 /obj/vehicle/sealed/mecha/spacepod/tarantula
-	desc = "An aging combat exosuit utilized by the Nanotrasen corporation. Originally developed to combat hostile alien lifeforms."
+	desc = "An aging spacepod utilized by the Nanotrasen corporation. Originally developed to haul cargo within space docks."
 	name = "\improper K37 Tarantula"
 	icon = 'icons/mecha/pods.dmi'
 	icon_state = "tarantula"

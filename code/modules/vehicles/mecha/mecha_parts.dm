@@ -339,29 +339,29 @@
 	construct_type = /datum/component/construction/unordered/mecha_chassis/tarantula
 
 /obj/item/mecha_parts/part/tarantula_hull
-	name = "\improper Odysseus head"
+	name = "\improper Tarantula hull"
 	desc = "An Odysseus head. Contains an integrated medical HUD scanner."
-	icon_state = "odysseus_head"
+	icon_state = "tarantula_hull"
 
 /obj/item/mecha_parts/part/tarantula_rearassembly
-	name = "\improper Odysseus torso"
+	name = "\improper Tarantula torso"
 	desc="A torso part of Odysseus. Contains power unit, processing core and life support systems along with an attachment port for a mounted sleeper."
-	icon_state = "odysseus_torso"
+	icon_state = "tarantula_rearassembly"
 
 /obj/item/mecha_parts/part/tarantula_frontassembly
-	name = "\improper Odysseus left arm"
+	name = "\improper Tarantula left arm"
 	desc = "An Odysseus left arm. Data and power sockets are compatible with specialized medical equipment."
-	icon_state = "odysseus_l_arm"
+	icon_state = "tarantula_frontassembly"
 
 /obj/item/mecha_parts/part/tarantula_enginecore
-	name = "\improper Odysseus right arm"
+	name = "\improper Tarantula right arm"
 	desc = "An Odysseus right arm. Data and power sockets are compatible with specialized medical equipment."
-	icon_state = "odysseus_r_arm"
+	icon_state = "tarantula_enginecore"
 
 /obj/item/mecha_parts/part/tarantula_lifesystems
-	name = "\improper Odysseus left leg"
+	name = "\improper Tarantula left leg"
 	desc = "An Odysseus left leg. Contains complex servodrives and balance maintaining systems to maintain stability for critical patients."
-	icon_state = "odysseus_l_leg"
+	icon_state = "tarantula_lifesystems"
 
 ///////// Circuitboards
 
