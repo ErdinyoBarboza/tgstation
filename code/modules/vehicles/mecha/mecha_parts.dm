@@ -332,6 +332,37 @@
 	desc="Savannah-Ivanov armor plates. They are uniquely shaped and reinforced to deal with the stresses of two pilots, grandiose leaps, and missiles."
 	icon_state = "savannah_ivanov_armor"
 
+// Tarantula
+
+/obj/item/mecha_parts/chassis/tarantula
+	name = "\improper Tarantula chassis"
+	construct_type = /datum/component/construction/unordered/mecha_chassis/tarantula
+
+/obj/item/mecha_parts/part/tarantula_hull
+	name = "\improper Odysseus head"
+	desc = "An Odysseus head. Contains an integrated medical HUD scanner."
+	icon_state = "odysseus_head"
+
+/obj/item/mecha_parts/part/tarantula_rearassembly
+	name = "\improper Odysseus torso"
+	desc="A torso part of Odysseus. Contains power unit, processing core and life support systems along with an attachment port for a mounted sleeper."
+	icon_state = "odysseus_torso"
+
+/obj/item/mecha_parts/part/tarantula_frontassembly
+	name = "\improper Odysseus left arm"
+	desc = "An Odysseus left arm. Data and power sockets are compatible with specialized medical equipment."
+	icon_state = "odysseus_l_arm"
+
+/obj/item/mecha_parts/part/tarantula_enginecore
+	name = "\improper Odysseus right arm"
+	desc = "An Odysseus right arm. Data and power sockets are compatible with specialized medical equipment."
+	icon_state = "odysseus_r_arm"
+
+/obj/item/mecha_parts/part/tarantula_lifesystems
+	name = "\improper Odysseus left leg"
+	desc = "An Odysseus left leg. Contains complex servodrives and balance maintaining systems to maintain stability for critical patients."
+	icon_state = "odysseus_l_leg"
+
 ///////// Circuitboards
 
 /obj/item/circuitboard/mecha

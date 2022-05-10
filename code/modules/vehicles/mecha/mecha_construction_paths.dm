@@ -816,6 +816,30 @@
 	outer_plating = /obj/item/stack/sheet/plasteel
 	outer_plating_amount = 5
 
+//TARANTULA
+/datum/component/construction/unordered/mecha_chassis/tarantula
+	result = /datum/component/construction/mecha/tarantula
+	steps = list(
+		/obj/item/mecha_parts/part/tarantula_hull,
+		/obj/item/mecha_parts/part/tarantula_rearassembly,
+		/obj/item/mecha_parts/part/tarantula_frontassembly,
+		/obj/item/mecha_parts/part/tarantula_enginecore,
+		/obj/item/mecha_parts/part/tarantula_lifesystems
+	)
+
+/datum/component/construction/mecha/tarantula
+	result = /obj/vehicle/sealed/mecha/spacepod/tarantula
+	base_icon = "tarantula"
+
+	circuit_control = /obj/item/circuitboard/mecha/tarantula/main
+	circuit_periph = /obj/item/circuitboard/mecha/tarantula/peripherals
+
+	inner_plating = /obj/item/stack/sheet/plasteel
+	inner_plating_amount = 5
+
+	outer_plating = /obj/item/stack/sheet/mineral/titanium
+	outer_plating_amount = 5
+
 #undef ADD_TREADS_STEP
 #undef CONNECT_HYDRAULICS_STEP
 #undef ACTIVATE_HYDRAULICS_STEP
